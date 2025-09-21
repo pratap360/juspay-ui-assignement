@@ -4,7 +4,6 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
@@ -77,10 +76,16 @@ const CommandWrapper = styled("div")(({ theme }) => ({
   opacity: 0.6,
 }));
 
-export default function Navbar() {
+export default function Navbar({
+  leftPanelOpen,
+  setLeftPanelOpen,
+  rightPanelOpen,
+  setRightPanelOpen,
+  isDarkMode,
+  setIsDarkMode,
+}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [isDarkMode, setIsDarkMode] = React.useState(true);
   const searchInputRef = React.useRef(null);
 
   const isMenuOpen = Boolean(anchorEl);
@@ -108,6 +113,14 @@ export default function Navbar() {
     // Apply theme to document body
     document.body.style.backgroundColor = !isDarkMode ? "#121212" : "#ffffff";
     document.body.style.color = !isDarkMode ? "#ffffff" : "#000000";
+  };
+
+  const toggleLeftPanel = () => {
+    setLeftPanelOpen(!leftPanelOpen);
+  };
+
+  const toggleRightPanel = () => {
+    setRightPanelOpen(!rightPanelOpen);
   };
 
   // Handle keyboard shortcut for search focus
@@ -246,7 +259,7 @@ export default function Navbar() {
         <span>Notifications</span>
       </MenuItem>
       <MenuItem
-        onClick={handleProfileMenuOpen}
+        onClick={toggleRightPanel}
         sx={{
           display: "flex",
           alignItems: "center",
@@ -269,6 +282,7 @@ export default function Navbar() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
+            onClick={toggleLeftPanel}
             sx={{ mr: 2, color: isDarkMode ? "#ffffff" : "#000000" }}
           >
             <ViewSidebarOutlinedIcon />
@@ -348,10 +362,8 @@ export default function Navbar() {
             <IconButton
               size="large"
               edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              aria-label="toggle right panel"
+              onClick={toggleRightPanel}
               color="inherit"
               sx={{ color: isDarkMode ? "#ffffff" : "#000000" }}
             >

@@ -28,9 +28,8 @@ const CurrentPage = styled(Typography)(({ theme, isDarkMode }) => ({
 export default function Breadcrumb({ isDarkMode = true, currentPath = [] }) {
   // Default breadcrumb path if none provided
   const defaultPath = [
-    { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Current Project', href: null }
+    { name: 'Dashboard', href: '/' },
+    { name: 'Default', href: '/default' },
   ];
 
   const breadcrumbPath = currentPath.length > 0 ? currentPath : defaultPath;
