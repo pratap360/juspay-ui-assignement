@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box } from "@mui/material";
 import Navbar from "./navbar/navbar";
 import LeftPanel from "./leftpanel/leftpanel";
 import RightPanel from "./rightpanel/rightpanel";
+import Dashboard from './leftpanel/dashboard/dashboard';
 
-export default function Home() {
-  const [leftPanelOpen, setLeftPanelOpen] = useState(true);
-  const [rightPanelOpen, setRightPanelOpen] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+export default function Home({ onNavigate, leftPanelOpen, setLeftPanelOpen, rightPanelOpen, setRightPanelOpen, isDarkMode, setIsDarkMode }) {
 
   return (
     <Box
@@ -49,24 +47,18 @@ export default function Home() {
           />
           <hr
             style={{
-              margin: 0
-              // border: "none",
-              // height: "1px",
-              // backgroundColor: isDarkMode
-              //   ? "rgba(255, 255, 255, 0.12)"
-              //   : "rgba(0, 0, 0, 0.12)",
-              // width: "100%",
+              margin: 0,
             }}
           />
         </Box>
         <Box
           sx={{
-            padding: 2,
+            padding: 0,
             minHeight: "calc(100vh - 64px)",
             backgroundColor: isDarkMode ? "#121212" : "#ffffff",
           }}
         >
-          {/* Main content area */}
+          <Dashboard isDarkMode={isDarkMode} onNavigate={onNavigate} />
         </Box>
       </Box>
       <RightPanel

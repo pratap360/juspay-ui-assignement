@@ -34,7 +34,7 @@ import {
   People,
 } from "@mui/icons-material";
 
-import byewind from "../../../public/images/byewind.png";
+import byewind from "../../assets/images/byewind.png";
 
 const StyledDrawer = styled(Drawer)(({ theme, isDarkMode }) => ({
   "& .MuiDrawer-paper": {

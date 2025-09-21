@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import {
   Drawer,
   Box,
@@ -12,16 +12,7 @@ import {
   Divider,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import {
-  BugReport,
-  PersonAdd,
-  NewReleases,
-  Code,
-  Edit,
-  Delete,
-  Person,
-  Favorite,
-} from "@mui/icons-material";
+import {BugReport} from "@mui/icons-material";
 import { Radio } from "lucide-react";
 import { UserRound } from "lucide-react";
 
@@ -65,7 +56,7 @@ const SectionTitle = styled(Typography)(({ theme, isDarkMode }) => ({
   marginBottom: theme.spacing(1),
 }));
 
-const StyledListItem = styled(ListItem)(({ theme }) => ({
+const StyledListItem = styled(ListItem)(() => ({
   padding: 0,
 }));
 
